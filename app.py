@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import numpy as np
+import pandas as pd
 
 #  Google CLoud Run URL
 FASTAPI_URL_Prediction = "https://fastapi-service-241991432743.us-west1.run.app/user_prediction/"
@@ -65,7 +66,7 @@ if submit_button:
             st.error(f"Request Failed: {e}")
 
 
-# Add  option for user to get last predictions as well as input data
+# Add option for user to get last predictions as well as input data
 st.markdown("---")
 st.subheader("View Past Predictions")
 
