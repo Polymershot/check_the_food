@@ -2,10 +2,10 @@ import streamlit as st
 import requests
 import numpy as np
 
-# ✅ Replace with your actual FastAPI Cloud Run URL
+#  Google CLoud Run URL
 FASTAPI_URL = "https://fastapi-service-241991432743.us-west1.run.app"
 
-# 🎨 Page Title & Header Section
+#  Intro
 st.title("Nutrition Prediction App")
 st.markdown(
     """
