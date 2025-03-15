@@ -3,7 +3,7 @@ import requests
 import numpy as np
 
 #  Google CLoud Run URL
-FASTAPI_URL = "https://fastapi-service-241991432743.us-west1.run.app"
+FASTAPI_URL = "https://fastapi-service-241991432743.us-west1.run.app/user_prediction/"
 
 #  Intro
 st.title("Nutrition Prediction App")
