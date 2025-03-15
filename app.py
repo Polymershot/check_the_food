@@ -36,18 +36,18 @@ with st.form(key="nutrition_form"):
 #  Send Data to API 
 if submit_button:
     user_input = {
-        "protein": np.sign(protein) * np.log(1 + abs(protein)),
-        "totalFat": np.sign(total_fat) * np.log(1 + abs(total_fat)),
-        "carbs": np.sign(carbs) * np.log(1 + abs(carbs)),
-        "totalSugars": np.sign(total_sugars) * np.log(1 + abs(total_sugars)),
-        "totalFiber": np.sign(total_fiber) + np.log(1 + abs(total_fiber)),
-        "calcium": np.sign(calcium) * np.log(1 + abs(calcium)),
-        "iron": np.sign(iron) + np.log(1 + abs(iron)),
-        "sodium": np.sign(sodium) * np.log(1 + abs(sodium)),
-        "vitaminC": np.sign(vitamin_c) * np.log(1 + abs(vitamin_c)),
-        "cholesterol": np.sign(cholesterol) * np.log(1 + abs(cholesterol)),
-        "saturatedFat": np.sign(saturated_fat) * np.log(1 + abs(saturated_fat)),
-        "vitaminA": np.sign(vitamin_a) * np.log(1 + abs(vitamin_a))
+        "protein": np.sign(protein) * (np.log(1 + abs(protein))) ** 0.2,
+        "totalFat": np.sign(total_fat) * (np.log(1 + abs(total_fat))) ** 0.2,
+        "carbs": np.sign(carbs) * (np.log(1 + abs(carbs))) ** 0.2,
+        "totalSugars": np.sign(total_sugars) * (np.log(1 + abs(total_sugars))) ** 0.2,
+        "totalFiber": np.sign(total_fiber) + (np.log(1 + abs(total_fiber))) ** 0.2,
+        "calcium": np.sign(calcium) * (np.log(1 + abs(calcium))) ** 0.2,
+        "iron": np.sign(iron) + (np.log(1 + abs(iron))) ** 0.2,
+        "sodium": np.sign(sodium) * (np.log(1 + abs(sodium))) ** 0.2,
+        "vitaminC": np.sign(vitamin_c) * (np.log(1 + abs(vitamin_c))) ** 0.2,
+        "cholesterol": np.sign(cholesterol) * (np.log(1 + abs(cholesterol))) ** 0.2,
+        "saturatedFat": np.sign(saturated_fat) * (np.log(1 + abs(saturated_fat))) ** 0.2,
+        "vitaminA": np.sign(vitamin_a) * (np.log(1 + abs(vitamin_a))) ** 0.2
     }
 
 
