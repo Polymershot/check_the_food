@@ -72,7 +72,7 @@ st.subheader("View Past Predictions")
 if st.button("Get Last 5 Predictions"):
     with st.spinner("Fetching past predictions..."):
         try:
-            response = requests.get(f"{FASTAPI_URL_Results}/results/")
+            response = requests.get(FASTAPI_URL_Results)
             if response.status_code == 200:
                 data = response.json()
                 # Convert dictionary to DataFrame
