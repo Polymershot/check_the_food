@@ -9,9 +9,45 @@ FASTAPI_URL_Results = "https://fastapi-service-241991432743.us-west1.run.app/res
 
 #  Intro
 st.title("Nutrition Prediction App")
+st.markdown("---")
 st.markdown(
+
     """
-    ### Welcome to the Nutrition Prediction App!
+    This web app is meant to be a prototype for the following research: 
+    @misc{GroceryDB, title={Prevalence of processed foods in major US grocery stores}, 
+    author={Babak Ravandi and Gordana Ispirova and Michael Sebek and Peter Mehler and Albert-László Barabási and Giulia Menichetti},
+    journal={Nature Food}
+    year={2025},
+    dio={10.1038/s43016-024-01095-7},
+    url = {https://www.nature.com/articles/s43016-024-01095-7}
+    
+    """
+)
+st.markdown("---")
+st.markdown(
+
+    """
+    ### Warning!
+    """
+)
+st.markdown("---")
+
+st.markdown(
+
+    """
+    The nutrient values should be based per 100 grams. Also, the data came pre-transformed so I did the best I could to alleviate that problem but to no avail. Most predictions will fall around a value of "3". 
+    
+    1 --> least processed 
+
+    4--> most processed
+
+
+    """
+)
+st.markdown(
+
+    """
+    ### Welcome to the Nutrition Prediction App! This project is meant to be a prototype from the following
     Enter the nutritional values below to predict the food category.
     """
 )
