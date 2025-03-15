@@ -30,13 +30,11 @@ st.markdown(
     ### Warning!
     """
 )
-st.markdown("---")
-
 st.markdown(
 
     """
     The nutrient values should be based per 100 grams. Also, the data came pre-transformed so I did the best I could to alleviate that problem but to no avail. Most predictions will fall around a value of "3". 
-    
+
     1 --> least processed 
 
     4--> most processed
@@ -44,6 +42,7 @@ st.markdown(
 
     """
 )
+st.markdown("---")
 st.markdown(
 
     """
