@@ -36,18 +36,18 @@ with st.form(key="nutrition_form"):
 #  Send Data to API 
 if submit_button:
     user_input = {
-        "protein": np.log(protein),
-        "totalFat": np.log(total_fat),
-        "carbs": np.log(carbs),
-        "totalSugars": np.log(total_sugars),
-        "totalFiber": np.log(total_fiber),
-        "calcium": np.log(calcium),
-        "iron": np.log(iron),
-        "sodium": np.log(sodium),
-        "vitaminC": np.log(vitamin_c),
-        "cholesterol": np.log(cholesterol),
-        "saturatedFat": np.log(saturated_fat),
-        "vitaminA": np.log(vitamin_a)
+        "protein": np.sign(protein) + np.log(1 + abs(protein)),
+        "totalFat": np.sign(total_fat) + np.log(1 + abs(total_fat)),
+        "carbs": np.sign(carbs) + np.log(1 + abs(carbs)),
+        "totalSugars": np.sign(total_sugars) + np.log(1 + abs(total_sugars)),
+        "totalFiber": np.sign(total_fiber) + np.log(1 + abs(total_fiber)),
+        "calcium": np.sign(calcium) + np.log(1 + abs(calcium)),
+        "iron": np.sign(iron) + np.log(1 + abs(iron)),
+        "sodium": np.sign(sodium) + np.log(1 + abs(sodium)),
+        "vitaminC": np.sign(vitamin_c) + np.log(1 + abs(vitamin_c)),
+        "cholesterol": np.sign(cholesterol) + np.log(1 + abs(cholesterol)),
+        "saturatedFat": np.sign(saturated_fat) + np.log(1 + abs(saturated_fat)),
+        "vitaminA": np.sign(vitamin_a) + np.log(1 + abs(vitamin_a))
     }
 
 
