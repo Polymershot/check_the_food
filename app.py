@@ -79,16 +79,16 @@ if st.button("View Past Predictions"):
             if data:
                 # Convert API response to a DataFrame
                 df = pd.DataFrame([
-                    {**input_data, "Predicted Value": pred}
+                    {**input_data, "Predicted Value": float(pred.split(":")[-1] if isinstance(pred, str) else pred)}
                     for key, (input_data, pred) in data.items()
                 ])
 
                 # Apply Custom Styling
                 st.dataframe(
                     df.style.set_properties(**{
-                        'background-color': '#f9f9f9', # Light gray background
-                        'border': '1px solid #ddd', # Border around cells
-                        'text-align': 'center' # Center align text
+                        'background-color': '#f9f9f9', 
+                        'border': '1px solid #ddd', 
+                        'text-align': 'center' 
                     }).set_table_styles([
                         {"selector": "th", "props": [("font-size", "16px"), ("text-align", "center")]},
                         {"selector": "td", "props": [("padding", "10px"), ("font-size", "14px")]}
