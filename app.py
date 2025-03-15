@@ -3,7 +3,8 @@ import requests
 import numpy as np
 
 #  Google CLoud Run URL
-FASTAPI_URL = "https://fastapi-service-241991432743.us-west1.run.app/user_prediction/"
+FASTAPI_URL_Prediction = "https://fastapi-service-241991432743.us-west1.run.app/user_prediction/"
+FASTAPI_URL_Results = "https://fastapi-service-241991432743.us-west1.run.app/results/"
 
 #  Intro
 st.title("Nutrition Prediction App")
@@ -52,7 +53,7 @@ if submit_button:
     # User input is getting sent to cloud run api
     with st.spinner("Your predictions are being processed... Please wait!"):
         try:
-            response = requests.post(FASTAPI_URL, json=user_input)
+            response = requests.post(FASTAPI_URL_Prediction, json=user_input)
         
             if response.status_code == 200:
                 prediction_result = response.json()
@@ -71,7 +72,7 @@ st.subheader("View Past Predictions")
 if st.button("Get Last 5 Predictions"):
     with st.spinner("Fetching past predictions..."):
         try:
-            response = requests.get(f"{FASTAPI_URL}/results/")
+            response = requests.get(f"{FASTAPI_URL_Results}/results/")
             if response.status_code == 200:
                 data = response.json()
                 # Convert dictionary to DataFrame
