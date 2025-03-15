@@ -47,7 +47,7 @@ st.markdown(
 
     """
     ### Welcome to the Nutrition Prediction App! This project is meant to be a prototype from the following
-    Enter the nutritional values below to predict the food category.
+    Enter the nutritional values of your food (per 100 grams) below to predict the food category.
     """
 )
 
