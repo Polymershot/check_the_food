@@ -69,22 +69,33 @@ if submit_button:
 # Add option for user to get last predictions as well as input data
 st.markdown("---")
 st.subheader("View Past Predictions")
+if st.button("View Past Predictions"):
+    with st.spinner("Fetching data... ⏳"):
+        response = requests.get(FASTAPI_URL_Results)
+        
+        if response.status_code == 200:
+            data = response.json()
 
-if st.button("Get Last 5 Predictions"):
-    with st.spinner("Fetching past predictions..."):
-        try:
-            response = requests.get(FASTAPI_URL_Results)
-            if response.status_code == 200:
-                data = response.json()
-                # Convert dictionary to DataFrame
-                table_data = []
-                for key, (input_data, prediction) in data.items():
-                    input_data["Prediction"] = prediction.split(":")[1] # Extract prediction value
-                    table_data.append(input_data)
+            if data:
+                # Convert API response to a DataFrame
+                df = pd.DataFrame([
+                    {**input_data, "Predicted Value": pred}
+                    for key, (input_data, pred) in data.items()
+                ])
 
-                df = pd.DataFrame(table_data)
-                st.table(df) # Display DataFrame as a clean table
+                # Apply Custom Styling
+                st.dataframe(
+                    df.style.set_properties(**{
+                        'background-color': '#f9f9f9', # Light gray background
+                        'border': '1px solid #ddd', # Border around cells
+                        'text-align': 'center' # Center align text
+                    }).set_table_styles([
+                        {"selector": "th", "props": [("font-size", "16px"), ("text-align", "center")]},
+                        {"selector": "td", "props": [("padding", "10px"), ("font-size", "14px")]}
+                    ])
+                )
+
             else:
-                st.error(f"API Error: {response.status_code} - {response.text}")
-        except requests.exceptions.RequestException as e:
-            st.error(f"Request Failed: {e}")
+                st.warning("No data found.")
+        else:
+            st.error(f"API Error {response.status_code}: {response.text}")
