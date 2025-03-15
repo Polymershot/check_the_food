@@ -48,14 +48,41 @@ if submit_button:
         "vitaminA": np.log(vitamin_a)
     }
 
-    try:
-        response = requests.post(FASTAPI_URL, json=user_input)
+
+    # User input is getting sent to cloud run api
+    with st.spinner("Your predictions are being processed... Please wait!"):
+        try:
+            response = requests.post(FASTAPI_URL, json=user_input)
         
-        if response.status_code == 200:
-            prediction_result = response.json()
-            st.success(f"**Prediction:** {prediction_result['prediction']}")
-        else:
-            st.error(f"API Error: {response.status_code} - {response.text}")
+            if response.status_code == 200:
+                prediction_result = response.json()
+                st.success(f"**Prediction:** {prediction_result['prediction']}")
+            else:
+                st.error(f"API Error: {response.status_code} - {response.text}")
     
-    except requests.exceptions.RequestException as e:
-        st.error(f"Request Failed: {e}")
+        except requests.exceptions.RequestException as e:
+            st.error(f"Request Failed: {e}")
+
+
+# Add  option for user to get last predictions as well as input data
+st.markdown("---")
+st.subheader("View Past Predictions")
+
+if st.button("Get Last 5 Predictions"):
+    with st.spinner("Fetching past predictions..."):
+        try:
+            response = requests.get(f"{FASTAPI_URL}/results/")
+            if response.status_code == 200:
+                data = response.json()
+                # Convert dictionary to DataFrame
+                table_data = []
+                for key, (input_data, prediction) in data.items():
+                    input_data["Prediction"] = prediction.split(":")[1] # Extract prediction value
+                    table_data.append(input_data)
+
+                df = pd.DataFrame(table_data)
+                st.table(df) # Display DataFrame as a clean table
+            else:
+                st.error(f"API Error: {response.status_code} - {response.text}")
+        except requests.exceptions.RequestException as e:
+            st.error(f"Request Failed: {e}")
