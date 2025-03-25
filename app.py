@@ -135,5 +135,6 @@ if st.button("View Past Predictions"):
                     st.warning("No data found.")
             else:
                 st.error(f"API Error {response.status_code}: {response.text}")
-         except requests.exceptions.RequestException as e:
+         
+        except requests.exceptions.RequestException as e:
              st.error(f"Request Failed: {e}")
