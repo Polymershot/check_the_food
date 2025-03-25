@@ -82,7 +82,11 @@ async def predict(user_input: UserInput) -> dict:
 async def get_results() -> dict:
 
     """
-    Output the last 5 predictions as well as the corresponding input data
+    Output the last 5 predictions as well as the corresponding input data in a basic dictionary with the following format: 
+
+    {"Prediction 1": row1_data,
+    
+     "Prediction 2": row2_data,...}
 
     Returns:
         dict: a dictionary of the input values and predicted values in descending order of time created
