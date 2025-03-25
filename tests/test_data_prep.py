@@ -6,7 +6,7 @@ from src.data_prep_functions import *
 def test_impute_zeros():
 
     """
-    Make sure that all missing values are imputed by zero for the lasn "n" columns
+    Make sure that all missing values are imputed by zero for the last "n" columns
     """
     df = pd.DataFrame({'a': [1,2,3,4 ], 'b': [2,3, np.nan, 4], 'c': [3,57,2, np.nan]})
     df = impute_zeros(df, 2)
