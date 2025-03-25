@@ -106,31 +106,34 @@ st.markdown("---")
 st.subheader("View Past Predictions")
 if st.button("View Past Predictions"):
     with st.spinner("Fetching data... ⏳"):
-        response = requests.get(FASTAPI_URL_Results)
+        try:
+            response = requests.get(FASTAPI_URL_Results)
         
-        if response.status_code == 200:
-            data = response.json()
+            if response.status_code == 200:
+                data = response.json()
 
-            if data:
-                # Convert API response to a DataFrame
-                df = pd.DataFrame([
-                    {**input_data, "Predicted Value": float(pred.split(":")[-1] if isinstance(pred, str) else pred)}
-                    for key, (input_data, pred) in data.items()
-                ])
-
-                # Apply Custom Styling
-                st.dataframe(
-                    df.style.set_properties(**{
-                        'background-color': '#f9f9f9', 
-                        'border': '1px solid #ddd', 
-                        'text-align': 'center' 
-                    }).set_table_styles([
-                        {"selector": "th", "props": [("font-size", "16px"), ("text-align", "center")]},
-                        {"selector": "td", "props": [("padding", "10px"), ("font-size", "14px")]}
+                if data:
+                    # Convert API response to a DataFrame
+                    df = pd.DataFrame([
+                        {**input_data, "Predicted Value": float(pred.split(":")[-1] if isinstance(pred, str) else pred)}
+                        for key, (input_data, pred) in data.items()
                     ])
-                )
 
+                    # Apply Custom Styling
+                    st.dataframe(
+                        df.style.set_properties(**{
+                            'background-color': '#f9f9f9', 
+                            'border': '1px solid #ddd', 
+                            'text-align': 'center' 
+                        }).set_table_styles([
+                            {"selector": "th", "props": [("font-size", "16px"), ("text-align", "center")]},
+                            {"selector": "td", "props": [("padding", "10px"), ("font-size", "14px")]}
+                        ])
+                    )
+
+                else:
+                    st.warning("No data found.")
             else:
-                st.warning("No data found.")
-        else:
-            st.error(f"API Error {response.status_code}: {response.text}")
+                st.error(f"API Error {response.status_code}: {response.text}")
+         except requests.exceptions.RequestException as e:
+             st.error(f"Request Failed: {e}")
