@@ -43,14 +43,14 @@ def create_prediction(user_input: UserInput) -> float:
         user_input (UserInput): User input in the format of {"variable": value, ...}
 
     Returns:
-        float: Variable type of your outcome variable
+        float: Predicted outcome value (1,2,3,4)
     """
     user_input = dict(user_input)
     features = np.array(list(user_input.values()))
     features = features.reshape(1,-1)
     prediction = model.predict(features)[0]
     return prediction
-
+    
 @app.post('/user_prediction/')
 async def predict(user_input: UserInput) -> dict:
 
