@@ -8,6 +8,9 @@ The main goal of this project was to create a prototype for a pseudo-nutrition c
 **Pipeline Diagram**:
 ![image](https://github.com/user-attachments/assets/5226f932-a639-4bbf-b224-1ae7224b4ba2)
 
+**Streamlit Link**:
+> checkthefood-893cd7rnas2rwy844pm4dy.streamlit.app
+
 # Project Development Process
 
 1. Clean GroceryDB data
