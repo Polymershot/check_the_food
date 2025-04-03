@@ -11,7 +11,7 @@ The main goal of this project was to create a prototype for a pseudo-nutrition c
 **Streamlit Link**:
 > https://checkthefood-893cd7rnas2rwy844pm4dy.streamlit.app
 
-# Project Development Process
+# Project Development Process (General)
 
 1. Clean GroceryDB data
 2. Create ML model for GroceryDB data, using RandomSearchCV, and save it as a pickle file
