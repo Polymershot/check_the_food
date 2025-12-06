@@ -1,6 +1,6 @@
 # Summary
 
-**Important**: This project has been disabled from view due to security concerns. The source code will be available to view via the repository.
+**Important**: This project has been disabled due to security concerns. The source code will be available to view via the repository.
 
 The main goal of this project was to create a prototype for a pseudo-nutrition checker web application using a ml model. This idea was based on "GroceryDB", which is a database that contains nutritional information on various foods from popular grocery stores. Using their results, I tried to train a basic ml model on their data to see if I could match their own models. Unfortunately, the data the data they provided was already transformed but they did not disclose what transformations they used so I tried my best. The model is trying to predict how "processed" a food is, on a scale of 1-4, based on various nutrients of a certain food item. Although the model performs horribly, the user is able to get a prediction by inputting various nutrients and retrieve the previous 5 predictions as well as the corresponding user data. The front-end is run on Streamlit Community Cloud while the back-end relies on a fastapi app contained in Google Cloud Run that connects with Google Firestore to store user input/output data. 
 
